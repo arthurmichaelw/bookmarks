@@ -12,3 +12,5 @@ router.put('/:id', checkToken, ensureLoggedIn,  bookmarkCtrl.updateBookmark, boo
 
 // POST
 router.post('/', checkToken, ensureLoggedIn, bookmarkCtrl.createBookmark, bookmarkCtrl.respondWithBookmark)
+
+module.exports = router

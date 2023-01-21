@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { Schema, model } = require('mogoose')
+const { Schema, model } = require('mongoose')
 const bcrypt = require('bcrypt')
 const crypto = require('crypto')
 const SALT_ROUNDS = 6

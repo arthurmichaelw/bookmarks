@@ -1,4 +1,4 @@
-const { Schema, model } = require('mogoose')
+const { Schema, model } = require('mongoose')
 
 const bookmarkSchema = new Schema({
     title: { type: String, require: true },
