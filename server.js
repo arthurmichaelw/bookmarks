@@ -18,3 +18,15 @@ app.use((req, res, next) => {
 app.use(logger('dev'))
 
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')))
+app.use(express.static(path.join(__dirname, 'build')))
+
+app.use('./api/users', require('./routers/api/users'))
+app.use('/api/bookmarks', require('./routes/api/bookmarks'))
+
+app.get('*', (req, rest) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+})
+
+app.listen(PORT, () => {
+    console.log(`I am listneing on Port : ${PORT}`)
+})
