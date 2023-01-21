@@ -1,5 +1,6 @@
 const Bookmark = require('../../models/bookmark')
 require('dotenv').config()
+const User = require('../../models/user')
 
 
 //delete bookmark
@@ -28,7 +29,11 @@ const updateBookmark = async (req, res, next) => {
 const createBookmark = async (req, res, next) => {
     try {
         const createdBookmark = await Bookmark.create(req.body)
+        const user = await User.findOne({ email: res.locals.data.email })
+        user.bookmarks.addToSet(createdBookmark)
+        await user.save()
         res.locals.data.bookmark = createdBookmark
+        next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
     }

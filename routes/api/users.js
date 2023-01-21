@@ -1,3 +1,22 @@
 const router = require('express').Router()
-const userController = require('../../controllers/users')
+const userCtrl = require('../../controllers/api/users')
+const checkToken = require('../../config/checkToken')
+const ensureLoggedIn = require('../../config/ensureLoggedIn')
 
+/*
+/api/users
+SignUp
+*/
+router.post('/', userCtrl.signUp, userCtrl.respondWithToken )
+/*
+/api/users/login
+Login
+*/
+router.post('/login', userCtrl.logIn, userCtrl.respondWithToken)
+/*
+/api/users/bookmarks
+Get Bookmarks by User
+*/
+router.get('/bookmarks', checkToken, ensureLoggedIn, userCtrl.getBookmarksByUser, userCtrl.respondWithBookmarks)
+
+module.exports = router
