@@ -21,7 +21,7 @@ const userSchema = new Schema ({
 
 userSchema.pre('save', async function (next) {
     if(!this.isModified('password')) return next()
-    const password = crypto.createHmac('sha256', process.env.SECRET).update(this.password).split('').reverse().join('')
+    const password = crypto.createHmac('sha256', process.env.SECRET).update(this.password).digest().split('').reverse().join('')
     this.password = await bcrypt.hash(this.password, SALT_ROUNDS)
 })
 
