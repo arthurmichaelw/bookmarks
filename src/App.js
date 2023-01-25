@@ -1,9 +1,15 @@
-import { useState, useEffect } from ' react'
+import { useState, useEffect } from 'react'
 
 export default function App(){
   // Login, SignUp, CreateBookmark, ListBookmarkByUser, DeleteBookmark, UpdateBookmark
 
-const [credentials, setCredentials] = useStat({
+const handleChangeAuth = (event) => {
+  setCredentials({...credentials, [event.target.name]: event.target.value })
+}
+const handleChange = (event) => {
+  setBookmark({ ...bookmark, [event.target.name]: event.target.value })
+}
+const [credentials, setCredentials] = useState({
   email: '',
   password: '',
   name: ''
@@ -116,11 +122,49 @@ const updateBookmark = async(id, updatedData) => {
 }
 
 useEffect(() => {
-  listBookmarkByUser()
+  const tokenData = localStorage.getItem('token')
+  if(tokenData && tokenData !== 'null' && tokenData !== 'undefined'){
+    listBookmarkByUser()
+  }
+}, [])
+
+useEffect(() => {
+  const tokenData = localStorage.getItem('token')
+  if(tokenData && tokenData !== 'null' && tokenData !== 'undefined'){
+    setToken(tokenData)
+  }
 }, [])
 
   return (
     <>
+    <h2>Login</h2>
+    <form onSubmit={(e) => {
+      e.preventDefault()
+      login()
+    }}>
+      <input type="text" value={credentials.email} name="email" onChange={handleChangeAuth} placeholder={'Email'}></input>
+      <input type="password" value={credentials.password} name="password" onChange={handleChangeAuth} placeholder={'Password'}></input>
+      <input type="submit" value="Login as an existing user"/>
+    </form>
+    <h2>Sign Up</h2>
+    <form onSubmit={(e) => {
+      e.preventDefault()
+      signUp()
+    }}>
+      <input type="text" value={credentials.email} name="email" onChange={handleChangeAuth} placeholder={'Email'}></input>
+      <input type="text" value={credentials.name} name="name" onChange={handleChangeAuth} placeholder={'Name'}></input>
+      <input type="password" value={credentials.password} name="password" onChange={handleChangeAuth} placeholder={'Password'}></input>
+      <input type="submit" value="Sign up as a new user"/>
+    </form>
+    <h2>Create A Bookmark</h2>
+    <form onSubmit={(e) => {
+      e.preventDefault()
+      createBookmark()
+    }}>
+      <input type="text" value={bookmark.title} name="title" onChange={handleChange} placeholder={'Title'}></input>
+      <input type="text" value={bookmark.url} name="url" onChange={handleChange} placeholder={'URL'}></input>
+      <input type="submit" value="Create Bookmark"/>
+    </form>
     <ul>
       { bookmarks.length ? bookmarks.map(item => (
         <li key={item.id}>
@@ -128,7 +172,7 @@ useEffect(() => {
           <a href={item.url} target='_blank'>{item.url}</a>
         </li>
       )): <>No Bookmarks Added</>}
-    </ul>
+    </ul> 
     </>
   )
 }
