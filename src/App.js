@@ -26,7 +26,9 @@ export default function App () {
   const [bookmarks, setBookmarks] = useState([])
 
   const [token, setToken] = useState('')
+  
   const login = async () => {
+    console.log('hit login')
     try {
       const response = await fetch('/api/users/login', {
         method: 'POST',
@@ -35,9 +37,12 @@ export default function App () {
         },
         body: JSON.stringify({ email: credentials.email, password: credentials.password })
       })
+      console.log('set fetch')
       const tokenResponse = await response.json()
+      console.log(tokenResponse)
       setToken(tokenResponse)
       localStorage.setItem('token', JSON.stringify(tokenResponse))
+      console.log('login token test', token)
     } catch (error) {
       console.error(error)
     } finally {
@@ -155,6 +160,7 @@ export default function App () {
   return (
     <>
       <Auth
+        token={token}
         login={login}
         credentials={credentials}
         handleChangeAuth={handleChangeAuth}

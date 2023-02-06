@@ -27,6 +27,7 @@ const logIn = async (req, res, next)=> {
         const match = await bcrypt.compare(password, user.password)
         if(!match) throw new Error('password did not match')
         res.locals.data.user = user
+        console.log(res.locals.data.user)
         res.locals.data.token = createJWT(user)
         next()
     } catch (error) {

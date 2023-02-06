@@ -11,7 +11,7 @@ const destroyBookmark = async (req, res, next) => {
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message})
-        console.log('destroy', error)
+        // console.log('destroy', error)
     }
 }
 
@@ -23,7 +23,7 @@ const updateBookmark = async (req, res, next) => {
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message})
-        console.log('update', error)
+        // console.log('update', error)
     }
 }
 
@@ -39,7 +39,7 @@ const createBookmark = async (req, res, next) => {
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
-        console.log('create', error)
+        // console.log('create', error)
     }
 }
 

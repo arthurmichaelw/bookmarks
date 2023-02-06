@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react'
 import Login from '../Login/Login'
 import SignUp from '../SignUp/SignUp'
 export default function Auth ({
+  token,
   login,
   signUp,
   credentials,
   handleChangeAuth
 }) {
   const [showSignUp, setShowSignUp] = useState(true)
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState()
 
   useEffect(() => {
     const getToken = () => {
@@ -24,7 +25,8 @@ export default function Auth ({
     const token = getToken()
     const data = token ? JSON.parse(window.atob(token.split('.')[1])).user : null
     setUser(data)
-  }, [])
+    console.log(user)
+  }, [token])
   return (
     <>
       {
