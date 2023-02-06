@@ -8,6 +8,8 @@ const signUp = async (req, res, next) => {
     try {
         const user = await User.create(req.body)
         const token = createJWT(user)
+        console.log('token', token)
+        console.log('user', user)
         res.locals.data.user = user
         res.locals.data.token = token
         next()
@@ -19,6 +21,7 @@ const signUp = async (req, res, next) => {
 const logIn = async (req, res, next)=> {
     try {
         const user = await User.findOne({ email: req.body.email })
+        console.log('login user', user)
         if(!user) throw Error('user not found, email was invalid')
         const password = crypto.createHmac('sha256', process.env.SECRET).update(req.body.password).digest('hex').split('').reverse().join('')
         const match = await bcrypt.compare(password, user.password)
@@ -68,4 +71,3 @@ module.exports = {
 function createJWT(user){
     return jwt.sign({ user }, process.env.SECRET, { expiresIn : '48h'})
 }
-

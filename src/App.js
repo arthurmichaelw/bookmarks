@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Auth from './components/Auth/Auth'
-import CreateBookmark from './components/CreateBookmark/CreateBookmark'
+import CreateBookmark from '../src/components/CreateBookmark/CreateBookmark'
 import BookmarkList from './components/BookmarkList/BookmarkList'
 
 export default function App () {
@@ -40,6 +40,8 @@ export default function App () {
       localStorage.setItem('token', JSON.stringify(tokenResponse))
     } catch (error) {
       console.error(error)
+    } finally {
+      window.location.reload()
     }
   }
   const signUp = async () => {
@@ -56,7 +58,12 @@ export default function App () {
       localStorage.setItem('token', JSON.stringify(tokenResponse))
     } catch (error) {
       console.error(error)
+    }finally {
+      window.location.reload()
     }
+  }
+  function logOut () {
+    localStorage.removeItem('token')
   }
   const createBookmark = async () => {
     try {

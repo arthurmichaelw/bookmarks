@@ -11,6 +11,7 @@ const destroyBookmark = async (req, res, next) => {
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message})
+        console.log('destroy', error)
     }
 }
 
@@ -22,6 +23,7 @@ const updateBookmark = async (req, res, next) => {
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message})
+        console.log('update', error)
     }
 }
 
@@ -29,6 +31,7 @@ const updateBookmark = async (req, res, next) => {
 const createBookmark = async (req, res, next) => {
     try {
         const createdBookmark = await Bookmark.create(req.body)
+        console.log('created bookmark', createdBookmark)
         const user = await User.findOne({ email: res.locals.data.email })
         user.bookmarks.addToSet(createdBookmark)
         await user.save()
@@ -36,6 +39,7 @@ const createBookmark = async (req, res, next) => {
         next()
     } catch (error) {
         res.status(400).json({ msg: error.message })
+        console.log('create', error)
     }
 }
 
