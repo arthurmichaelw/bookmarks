@@ -4,8 +4,7 @@ export default function SignUp ({
     handleChangeAuth
   }) {
     return (
-      <div id="sing-up-form">
-        <h2>SignUp</h2>
+      <div>
         <form onSubmit={(e) => {
           e.preventDefault()
           signUp()
@@ -14,7 +13,7 @@ export default function SignUp ({
           <input type='text' value={credentials.email} name='email' onChange={handleChangeAuth} placeholder='Email' />
           <input type='text' value={credentials.name} name='name' onChange={handleChangeAuth} placeholder='Name' />
           <input type='password' value={credentials.password} name='password' onChange={handleChangeAuth} placeholder='password' />
-          <input type='submit' value='Sign Up as New User' />
+          <input type='submit' id="sign-up-button" value='Sign Up' />
         </form>
       </div>
     )

@@ -6,14 +6,14 @@ export default function Login ({
     return (
       <>
         <h2>Login</h2>
-        <form onSubmit={(e) => {
+        <form id="login-form" onSubmit={(e) => {
           e.preventDefault()
           login()
         }}
         >
           <input type='text' value={credentials.email} name='email' onChange={handleChangeAuth} placeholder='Email Here' />
           <input type='password' value={credentials.password} name='password' onChange={handleChangeAuth} placeholder='Password' />
-          <input type='submit' value='Login as an Existing User' />
+          <input type='submit' id="login-form-button" value='Login' />
         </form>
       </>
     )

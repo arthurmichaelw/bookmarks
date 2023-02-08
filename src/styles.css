@@ -65,6 +65,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 50%;
     /* background-color: green; */
 }
 
@@ -97,9 +98,18 @@ input[type=text] {
     border-radius: var(--border-radius);
 }
 
+input[type=password] {
+    padding: 5px;
+    margin: 5px 0;
+    width: 100%;
+    border: 2px solid var(--inner-container-background-color);
+    border-radius: var(--border-radius);
+}
+
 #create-button {
     padding: 3px;
     margin: 2px;
+    margin-top: 5px;
     border: 2px solid var(--text-color);
     border-radius: var(--border-radius);
     background-color: white;
@@ -156,4 +166,74 @@ a:visited {
   
 a:hover {
     color: var(--accent-color);
+}
+
+#sign-up-container {
+    padding: 23px 29px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid var(--text-color);
+    font-size: 17px;
+    font-weight: bold;
+    padding: 23px 29px;
+    width: 50%;
+}
+
+.sign-up-title {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#sign-up-button {
+    padding: 3px 5px;
+    margin-left: 35%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    background-color: white;
+    cursor: pointer;
+}
+
+#sign-up-button:hover {
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    background-color: var(--text-color);
+    color: white;
+    cursor: pointer;
+}
+
+#login-button {
+    margin-left: 40%;
+    padding: 3px 5px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#login-form-button {
+    padding: 3px 5px;
+    margin: 2px;
+    margin-top: 5px;
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    background-color: white;
+    cursor: pointer;
+}
+
+#login-form-button:hover {
+    padding: 3px 5px;
+    margin: 2px;
+    margin-top: 5px;
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    background-color: var(--text-color);
+    color: white;
+    cursor: pointer;
 }

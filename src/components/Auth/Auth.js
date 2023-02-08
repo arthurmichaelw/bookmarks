@@ -34,20 +34,24 @@ export default function Auth ({
                 <h1>Welcome {user.name.toUpperCase()}</h1>
                 </div>
               : <div id="sign-up-container">
-                <button
-                  onClick={() => {
-                    setShowSignUp(!showSignUp)
-                  }}
-                >
-                  {showSignUp ? 'Sign Up With A New Account Below or Click Here To Login As An Existing User' : 'Welcome Back, Login As An Existing User or Click Here To Sign Up With A New Account'}
-                </button>
                 {
-                    showSignUp
-                      ? <SignUp
+                  showSignUp
+                    ? <div>
+                      <h2 className="sign-up-title">Sign Up</h2>
+                        <SignUp
                           signUp={signUp}
                           credentials={credentials}
                           handleChangeAuth={handleChangeAuth}
                         />
+                  <h2 className="sign-up-title">Already have an Account?</h2>
+                        <button id="login-button"
+                  onClick={() => {
+                    setShowSignUp(!showSignUp)
+                  }}
+                >
+                  {showSignUp ? 'Login' : 'Welcome Back, Login As An Existing User or Click Here To Sign Up With A New Account'}
+                </button>
+                        </div>
                       : <Login
                           login={login}
                           credentials={credentials}
