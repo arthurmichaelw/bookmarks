@@ -25,10 +25,9 @@ export default function App () {
   })
   const [bookmarks, setBookmarks] = useState([])
 
-  const [token, setToken] = useState('')
+  const [token, setToken] = useState(localStorage.getItem('token'))
   
   const login = async () => {
-    console.log('hit login')
     try {
       const response = await fetch('/api/users/login', {
         method: 'POST',
@@ -37,16 +36,11 @@ export default function App () {
         },
         body: JSON.stringify({ email: credentials.email, password: credentials.password })
       })
-      console.log('set fetch')
       const tokenResponse = await response.json()
-      console.log(tokenResponse)
       setToken(tokenResponse)
       localStorage.setItem('token', JSON.stringify(tokenResponse))
-      console.log('login token test', token)
     } catch (error) {
       console.error(error)
-    } finally {
-      window.location.reload()
     }
   }
   const signUp = async () => {
@@ -63,9 +57,10 @@ export default function App () {
       localStorage.setItem('token', JSON.stringify(tokenResponse))
     } catch (error) {
       console.error(error)
-    }finally {
-      window.location.reload()
     }
+    // finally {
+    //   window.location.reload()
+    // }
   }
   function logOut () {
     localStorage.removeItem('token')
@@ -158,7 +153,7 @@ export default function App () {
     }
   }, [])
   return (
-    <>
+    <main id="container">
       <Auth
         token={token}
         login={login}
@@ -166,6 +161,7 @@ export default function App () {
         handleChangeAuth={handleChangeAuth}
         signUp={signUp}
       />
+      <div id="content">
       <CreateBookmark
         createBookmark={createBookmark}
         bookmark={bookmark}
@@ -176,6 +172,7 @@ export default function App () {
         deleteBookmark={deleteBookmark}
         updateBookmark={updateBookmark}
       />
-    </>
+      </div>
+    </main>
   )
 }

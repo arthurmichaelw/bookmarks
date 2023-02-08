@@ -1,0 +1,47 @@
+:root {
+    --body-background-color: #e6ebf3;
+    --container-background-color: #f3f3f3;
+    --inner-container-background-color: #f8f8f8;
+    --text-color: #000B42;
+    --accent-color: #3F8AE6;
+    --sidebar-heaader-text-color: #ABB3C3;
+    --artist-name-text-color: #c0c7d2;
+    --border-radius: 6px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    align-items: center;
+    background-color: var(--body-background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+#root {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 50px 0;
+}
+
+#container {
+    background-color: var(--container-background-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 170px 0 rgba(0,0,0,.1);
+    display: flex;
+    justify-content: space-between;
+    min-height: 450px;
+    max-width: 530px;
+    min-width: 530px;
+}
+
+ul {
+    list-style: none;
+}

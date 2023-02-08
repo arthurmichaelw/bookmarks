@@ -25,7 +25,6 @@ export default function Auth ({
     const token = getToken()
     const data = token ? JSON.parse(window.atob(token.split('.')[1])).user : null
     setUser(data)
-    console.log(user)
   }, [token])
   return (
     <>
