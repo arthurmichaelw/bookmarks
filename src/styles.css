@@ -237,3 +237,7 @@ a:hover {
     color: white;
     cursor: pointer;
 }
+
+#no-bookmark {
+    text-align: center;
+}
