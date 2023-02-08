@@ -4,7 +4,7 @@
     --inner-container-background-color: #f8f8f8;
     --text-color: #000B42;
     --accent-color: #3F8AE6;
-    --sidebar-heaader-text-color: #ABB3C3;
+    --sidebar-header-text-color: #ABB3C3;
     --artist-name-text-color: #c0c7d2;
     --border-radius: 6px;
 }
@@ -23,12 +23,14 @@ body {
     justify-content: center;
     height: 100vh;
     overflow-x: hidden;
+    flex-direction: row;
 }
 
 #root {
     margin-top: auto;
     margin-bottom: auto;
     padding: 50px 0;
+    font-family: 'Jost', sans-serif;
 }
 
 #container {
@@ -36,12 +38,122 @@ body {
     border-radius: var(--border-radius);
     box-shadow: 0 0 170px 0 rgba(0,0,0,.1);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     min-height: 450px;
+    max-height: 450px;
     max-width: 530px;
     min-width: 530px;
 }
 
 ul {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#user-name {
+    border-right: 1px solid var(--text-color);
+    font-size: 17px;
+    font-weight: bold;
+    padding: 23px 29px;
+}
+
+#content {
+    padding: 23px 29px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: green; */
+}
+
+#create-bookmark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 10px;
+    /* background-color: red; */
+}
+
+#create-bookmark-title {
+    padding-bottom: 10px;
+}
+
+#create-bookmark-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+input[type=text] {
+    padding: 5px;
+    margin: 5px 0;
+    width: 100%;
+    border: 2px solid var(--inner-container-background-color);
+    border-radius: var(--border-radius);
+}
+
+#create-button {
+    padding: 3px;
+    margin: 2px;
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    background-color: white;
+    cursor: pointer;
+}
+
+#create-button:hover {
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    background-color: var(--text-color);
+    color: white;
+    cursor: pointer;
+}
+
+#bookmark-list {
+    margin-top: 15px;
+    display: block;
+    height: 100%;
+    overflow: scroll;
+    width: 100%;
+}
+
+li {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+button {
+    padding: 3px;
+    margin: 2px;
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    background-color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    background-color: var(--text-color);
+    color: white;
+    cursor: pointer;
+}
+
+a:link {
+    color: var(--text-color);
+}
+  
+a:visited {
+    color: var(--text-color);
+}
+  
+a:hover {
+    color: var(--accent-color);
 }

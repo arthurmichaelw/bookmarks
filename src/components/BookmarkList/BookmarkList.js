@@ -6,6 +6,7 @@ export default function BookmarkList ({
   deleteBookmark
 }) {
   return (
+    <div id="bookmark-list">
     <ul>
       {
             bookmarks.length
@@ -17,10 +18,11 @@ export default function BookmarkList ({
                   deleteBookmark={deleteBookmark}
                 />
               ))
-              : <>
+              : <li>
                 <h2>No Bookmarks Yet... Add one in the Form Above</h2>
-                </>
+                </li>
         }
     </ul>
+    </div>
   )
 }

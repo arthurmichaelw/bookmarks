@@ -30,8 +30,10 @@ export default function Auth ({
     <>
       {
             user && user.name
-              ? <h1>Welcome {user.name.toUpperCase()}</h1>
-              : <>
+              ? <div id="user-name">
+                <h1>Welcome {user.name.toUpperCase()}</h1>
+                </div>
+              : <div id="sign-up-container">
                 <button
                   onClick={() => {
                     setShowSignUp(!showSignUp)
@@ -52,7 +54,7 @@ export default function Auth ({
                           handleChangeAuth={handleChangeAuth}
                         />
                 }
-              </>
+              </div>
         }
 
     </>
